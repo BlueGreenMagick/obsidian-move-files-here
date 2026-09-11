@@ -1,0 +1,9 @@
+{
+  "id": "select-files-for-move",
+  "name": "Select Files for Move",
+  "author": "Yoonchae Lee",
+  "version": "0.0.1",
+  "minAppVersion": "1.13.0",
+  "description": "Provides two context menu items: 'Select item for move' and 'Move selected items into folder'.",
+  "isDesktopOnly": false
+}
