@@ -5,8 +5,6 @@ Select Files for Move is an Obsidian plugin that provides a new method for movin
 1. Right click a file or folder that you want to move, choose 'Select file/folder for move' in the context menu.
 2. Right click the folder you want to move selected items into, choose 'Move selected items into folder' in the context menu.
 
-
-
 ## Development
 
 Install dependencies and build the plugin:
