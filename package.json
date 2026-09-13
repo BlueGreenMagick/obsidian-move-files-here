@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-select-files-for-move",
+  "name": "obsidian-move-files-here",
   "version": "1.0.1",
-  "description": "An Obsidian plugin that provides 'select files for move' context menu",
+  "description": "Move selected files and folders into a folder from its context menu.",
   "keywords": [],
   "license": "MIT",
   "type": "module",
