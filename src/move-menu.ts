@@ -1,7 +1,7 @@
 import * as Obsidian from "obsidian";
 import { isValidMoveTarget, moveAbstractFiles } from "./move-abstract-files";
 
-const MOVE_SECTION = "select-files-for-move";
+const MOVE_SECTION = "move-files-here-context-menu";
 
 // File explorer selection and menu ordering are not exposed by the public API.
 type ExplorerView = Obsidian.View & {

@@ -1,7 +1,7 @@
 import * as Obsidian from "obsidian";
 import { addMoveSelectedItems } from "./move-menu";
 
-export class SelectFileForMovePlugin extends Obsidian.Plugin {
+export class MoveFilesHerePlugin extends Obsidian.Plugin {
   onload(): void {
     this.registerEvent(
       this.app.workspace.on("file-menu", (menu, file, source) => {
@@ -13,4 +13,4 @@ export class SelectFileForMovePlugin extends Obsidian.Plugin {
   }
 }
 
-export default SelectFileForMovePlugin;
+export default MoveFilesHerePlugin;
