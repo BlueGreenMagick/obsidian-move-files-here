@@ -64,10 +64,20 @@ export function isValidMoveTarget(
   );
 }
 
+// Case-insensitive existence check; not exposed by the public API.
+type VaultInsensitiveLookup = Obsidian.Vault & {
+  getAbstractFileByPathInsensitive?(path: string): Obsidian.TAbstractFile | null;
+};
+
+function pathExists(app: Obsidian.App, path: string): boolean {
+  const vault = app.vault as VaultInsensitiveLookup;
+  return (vault.getAbstractFileByPathInsensitive?.(path) ?? app.vault.getAbstractFileByPath(path)) !== null;
+}
+
 function getAvailablePath(app: Obsidian.App, basePath: string, extension: string): string {
   const join = (path: string) => (extension ? path + "." + extension : path);
   let path = join(basePath);
-  for (let n = 1; app.vault.getAbstractFileByPath(path); n++) {
+  for (let n = 1; pathExists(app, path); n++) {
     path = join(basePath + " " + n);
   }
   return path;
