@@ -7,7 +7,6 @@ const MOVE_SECTION = "move-files-here-context-menu";
 type ExplorerView = Obsidian.View & {
   tree?: {
     selectedDoms?: Set<{ file: Obsidian.TAbstractFile }>;
-    activeDom?: { file: Obsidian.TAbstractFile } | null;
   };
 };
 type OrderedMenu = Obsidian.Menu & { sections?: string[] };
@@ -21,15 +20,14 @@ export function addMoveSelectedItems(
     | ExplorerView
     | undefined;
   const tree = explorer?.tree;
-  const items = tree?.selectedDoms?.size
-    ? Array.from(tree.selectedDoms)
-    : tree?.activeDom
-      ? [tree.activeDom]
-      : [];
-  if (!items.length) return;
+  const selected = Array.from(tree?.selectedDoms ?? [], (dom) => dom.file);
+  const activeFile = app.workspace.getActiveFile();
+  if (activeFile && !selected.includes(activeFile)) {
+    selected.push(activeFile);
+  }
+  if (!selected.length) return;
 
   // Capture the selection before closing the menu can change it.
-  const selected = items.map((dom) => dom.file);
   if (
     !selected.every((file) => isValidMoveTarget(file, destination)) ||
     selected.every((file) => file.parent === destination)
