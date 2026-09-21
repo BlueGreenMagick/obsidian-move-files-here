@@ -38,7 +38,7 @@ export function addMoveSelectedFiles(
 
   menu.addItem((menuItem) => {
     menuItem
-      .setTitle(selected.length === 1 ? "Move selected file here." : "Move selected files here.")
+      .setTitle(selected.length === 1 ? "Move selected file here" : "Move selected files here")
       .setIcon("folder-input")
       .setSection(MOVE_SECTION)
       .onClick(async () => {
