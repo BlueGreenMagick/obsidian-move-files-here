@@ -2,7 +2,7 @@
   "id": "move-selected-files-here",
   "name": "Move Selected Files Here",
   "author": "Yoonchae Lee",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "minAppVersion": "1.13.0",
   "description": "Adds a context menu 'Move selected files here'.",
   "isDesktopOnly": false

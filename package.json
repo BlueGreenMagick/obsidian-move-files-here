@@ -1,6 +1,6 @@
 {
   "name": "obsidian-move-selected-files-here",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Move selected files and folders into a folder from its context menu.",
   "keywords": [],
   "license": "MIT",
