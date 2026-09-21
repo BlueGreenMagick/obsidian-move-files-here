@@ -1,7 +1,7 @@
 import * as Obsidian from "obsidian";
 import { isValidMoveTarget, moveAbstractFiles } from "./move-abstract-files";
 
-const MOVE_SECTION = "move-files-here-context-menu";
+const MOVE_SECTION = "move-selected-files-here-context-menu";
 
 // File explorer selection and menu ordering are not exposed by the public API.
 type ExplorerView = Obsidian.View & {
@@ -11,7 +11,7 @@ type ExplorerView = Obsidian.View & {
 };
 type OrderedMenu = Obsidian.Menu & { sections?: string[] };
 
-export function addMoveSelectedItems(
+export function addMoveSelectedFiles(
   app: Obsidian.App,
   menu: Obsidian.Menu,
   destination: Obsidian.TFolder,
@@ -35,19 +35,19 @@ export function addMoveSelectedItems(
     return;
   }
 
-  menu.addItem((item) => {
-    item
-      .setTitle(selected.length === 1 ? "Move selected item here" : "Move selected items here")
+  menu.addItem((menuItem) => {
+    menuItem
+      .setTitle(selected.length === 1 ? "Move selected file here." : "Move selected files here.")
       .setIcon("folder-input")
       .setSection(MOVE_SECTION)
       .onClick(async () => {
         const { skipped, failures } = await moveAbstractFiles(app, selected, destination);
         for (const { file, error } of failures) {
-          console.error("Could not move selected item", file.path, error);
+          console.error("Could not move selected file.", file.path, error);
         }
         if (skipped || failures.length) {
           new Obsidian.Notice(
-            `Move selected items: ${skipped} skipped, ${failures.length} failed.`,
+            `Move selected files: ${skipped} skipped, ${failures.length} failed.`,
           );
         }
       });
@@ -59,7 +59,7 @@ export function addMoveSelectedItems(
     const existing = sections.indexOf(MOVE_SECTION);
     if (existing !== -1) sections.splice(existing, 1);
     sections.unshift(MOVE_SECTION);
-    // Include unsectioned items so Obsidian also separates them from our action.
+    // Include unsectioned menu entries so Obsidian also separates them from our action.
     if (!sections.includes("")) sections.push("");
   } else {
     menu.addSeparator();

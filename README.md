@@ -1,9 +1,9 @@
-# Move Files Here
+# Move Selected Files Here
 
-Move Files Here adds a context menu action to move selected files and folders into a folder in Obsidian.
+Move Selected Files Here adds a context menu action to move selected files and folders into a folder in Obsidian.
 
 1. Select one or more files or folders in the File Explorer.
-2. Right-click the destination folder and click **Move selected items here**.
+2. Right-click the destination folder and click **Move selected files here**.
 
 ## Development
 
@@ -19,7 +19,7 @@ The build writes `main.js` and `manifest.json` to `./dist/`.
 Then symlink the `./dist/` folder from the Obsidian plugin folder.
 
 ```sh
-ln -s <path to ./dist/> move-files-here
+ln -s <path to ./dist/> move-selected-files-here
 ```
 
 If you want to sync your plugins, you will need to copy the folder instead of symlinking.

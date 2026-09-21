@@ -1,17 +1,17 @@
 import * as Obsidian from "obsidian";
-import { addMoveSelectedItems } from "./move-menu";
+import { addMoveSelectedFiles } from "./move-menu";
 
-export class SelectFileForMovePlugin extends Obsidian.Plugin {
+export class MoveSelectedFilesHerePlugin extends Obsidian.Plugin {
   onload(): void {
     this.registerEvent(
       this.app.workspace.on("file-menu", (menu, file, source) => {
         if (source === "file-explorer-context-menu" && file instanceof Obsidian.TFolder) {
           try {
-            addMoveSelectedItems(this.app, menu, file);
+            addMoveSelectedFiles(this.app, menu, file);
           } catch (error) {
-            console.error("Move Files Here: failed to add context menu.", error);
+            console.error("Move Selected Files Here: failed to add context menu.", error);
             new Obsidian.Notice(
-              "Move Files Here: failed to add context menu. Open dev tools for detailed error message.",
+              "Move Selected Files Here: failed to add context menu. Open dev tools for detailed error message.",
             );
           }
         }
@@ -20,4 +20,4 @@ export class SelectFileForMovePlugin extends Obsidian.Plugin {
   }
 }
 
-export default SelectFileForMovePlugin;
+export default MoveSelectedFilesHerePlugin;

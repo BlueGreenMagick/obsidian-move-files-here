@@ -8,7 +8,7 @@ export interface MoveAbstractFilesResult {
 
 /**
  * Move files and folders the way Obsidian's file explorer drag-and-drop does:
- * suffix conflicting names, update links, and if any item can't be moved into
+ * suffix conflicting names, update links, and if any file can't be moved into
  * `destination`, move none of them. Descendants of a selected folder move
  * with that folder rather than being moved again individually.
  */
@@ -43,7 +43,7 @@ export async function moveAbstractFiles(
       const name = extension ? file.name.slice(0, -(extension.length + 1)) : file.name;
       const basePath = destination.isRoot() ? name : destination.path + "/" + name;
       const path = getAvailablePath(app, basePath, extension);
-      // Sequential moves let each subsequent item see names already taken.
+      // Sequential moves let each subsequent file see names already taken.
       await app.fileManager.renameFile(file, path);
       moved++;
     } catch (error) {
