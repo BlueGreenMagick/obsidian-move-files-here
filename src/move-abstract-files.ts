@@ -77,7 +77,7 @@ function pathExists(app: Obsidian.App, path: string): boolean {
 }
 
 function getAvailablePath(app: Obsidian.App, basePath: string, extension: string): string {
-  const join = (path: string) => (extension ? path + "." + extension : path);
+  const join = (path: string) => Obsidian.normalizePath(extension ? path + "." + extension : path);
   let path = join(basePath);
   for (let n = 1; pathExists(app, path); n++) {
     path = join(basePath + " " + n);
