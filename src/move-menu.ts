@@ -21,6 +21,7 @@ export function addMoveSelectedFiles(
     | undefined;
   const tree = explorer?.tree;
   const selected = Array.from(tree?.selectedDoms ?? [], (dom) => dom.file);
+  // Intentionally include the active note because the sidebar visually marks it as selected.
   const activeFile = app.workspace.getActiveFile();
   if (activeFile && !selected.includes(activeFile)) {
     selected.push(activeFile);
