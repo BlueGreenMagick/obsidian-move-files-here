@@ -5,6 +5,8 @@ Move Selected Files Here adds a context menu action to move selected files and f
 1. Select one or more files or folders in the File Explorer.
 2. Right-click the destination folder and click **Move selected files here**.
 
+![screenshot](resources/screenshot.png)
+
 ## Development
 
 Install dependencies and build the plugin:
